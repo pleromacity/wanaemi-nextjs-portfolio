@@ -13,6 +13,7 @@ export default function AboutPage() {
       {/* ── HEADER ── */}
       <section className="mb-16 animate-fade-up">
         <p className="section-label mb-3">About</p>
+        <div> <img src="/profile.png" alt="Wanaemi Watson" className="w-32 h-32 rounded-full object-cover" /> </div>
         <h1 className="text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-zinc-100 mb-6 leading-tight">
           Wanaemi Watson
           <br />
@@ -22,12 +23,13 @@ export default function AboutPage() {
         </h1>
 
         {/* Bio paragraphs */}
-        <div className="space-y-4 text-zinc-600 dark:text-zinc-400 leading-relaxed text-[15px]">
+        <div className="space-y-0 text-zinc-600 dark:text-zinc-400 leading-relaxed text-[15px]">
           {siteConfig.bio.split(/\. (?=[A-Z])/).map((sentence, i) => (
             <p key={i}>{sentence.trim()}{sentence.endsWith('.') ? '' : '.'}</p>
           ))}
         </div>
       </section>
+
 
       {/* ── QUICK FACTS ── */}
       <section className="mb-16 animate-fade-up" style={{ animationDelay: '0.05s' }}>
