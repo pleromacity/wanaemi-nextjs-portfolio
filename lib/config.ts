@@ -9,7 +9,7 @@ export const siteConfig = {
   whatsapp:    '+2348185150882',
   phone:       '+2349069669743',
   role:        'Platform Engineering Architect',
-  location:    'Port Harcourt, Nigeria',
+  location:    'Port Harcourt, Nigeria/ Remote Global',
 
   /** Rotating roles shown in the hero typewriter */
   roles: [

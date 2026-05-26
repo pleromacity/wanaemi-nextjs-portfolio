@@ -14,10 +14,10 @@ export default function AboutPage() {
       <section className="mb-16 animate-fade-up">
         <p className="section-label mb-3">About</p>
         <h1 className="text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-zinc-100 mb-6 leading-tight">
-          Platform Engineering Architect
+          Wanaemi Watson
           <br />
           <span className="text-zinc-400 dark:text-zinc-500 font-normal text-2xl">
-            building where infrastructure meets reliability
+            Platform Engineering Architect
           </span>
         </h1>
 
@@ -34,12 +34,12 @@ export default function AboutPage() {
         <p className="section-label">Quick facts</p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {[
-            { label: 'Location',       value: siteConfig.location },
-            { label: 'Specialisation', value: 'Cloud & DevOps'    },
-            { label: 'Certified',      value: 'PSM I · HSE L1–3'  },
-            { label: 'Platforms',      value: 'AWS · Azure · GCP' },
-            { label: 'Availability',   value: 'Open to roles'     },
-            { label: 'GitHub',         value: '@pleromacity'      },
+            { label: 'Location', value: siteConfig.location },
+            { label: 'Specialisation', value: 'Cloud, DevOps & Site Reliability' },
+            { label: 'Certified', value: 'AWS-CSA, CKA, SRE-F' },
+            { label: 'Platforms', value: 'AWS · Azure · GCP' },
+            { label: 'Availability', value: 'Open to roles' },
+            { label: 'GitHub', value: '@pleromacity' },
           ].map(({ label, value }) => (
             <div
               key={label}
@@ -91,10 +91,14 @@ export default function AboutPage() {
         <p className="section-label">Certifications & credentials</p>
         <div className="space-y-3">
           {[
-            { title: 'Professional Scrum Master I (PSM I)', org: 'Scrum.org',         year: '2024' },
-            { title: 'HSE Level 1 – 3',                    org: 'Safety Certification', year: '2023' },
-            { title: 'AWS Solutions Architect (in view)',   org: 'Amazon Web Services', year: '2025' },
-            { title: 'Azure Administrator (in view)',       org: 'Microsoft',           year: '2025' },
+            { title: 'AWS Solutions Architect', org: 'Amazon Web Services', year: '2025' },
+            { title: 'Azure Administrator', org: 'Microsoft', year: '2025' },
+            { title: 'AWS‑CSA (Pro)', org: 'Amazon Web Services', year: '2025' },
+            { title: 'CKA', org: 'Cloud Native Computing Foundation', year: '2025' },
+            { title: 'SRE‑F', org: 'DevOps Institute', year: '2025' },
+            { title: 'Professional Scrum Master I (PSM I)', org: 'Scrum.org', year: '2024' },
+            { title: 'HSE Level 1 – 3', org: 'Safety Certification', year: '2023' }
+
           ].map(({ title, org, year }) => (
             <div
               key={title}
