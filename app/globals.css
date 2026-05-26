@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --font-geist-sans: 'Inter', system-ui, sans-serif;
+  --font-geist-mono: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100;
+    font-family: var(--font-geist-sans);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection {
+    @apply bg-indigo-100 dark:bg-indigo-900/50;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-zinc-300 dark:bg-zinc-700 rounded-full;
+  }
+}
+
+@layer components {
+
+  /* Nav link */
+  .nav-link {
+    @apply text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors duration-150 relative;
+  }
+
+  .nav-link.active {
+    @apply text-zinc-900 dark:text-zinc-100;
+  }
+
+  /* Tag / badge */
+  .tag {
+    @apply text-xs font-medium px-2 py-0.5 rounded-full bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400 transition-colors;
+  }
+
+  .tag-accent {
+    @apply text-xs font-medium px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600 dark:bg-indigo-950 dark:text-indigo-400;
+  }
+
+  /* Card */
+  .card {
+    @apply rounded-xl border border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-5 transition-all duration-200 hover:border-zinc-200 dark:hover:border-zinc-700 hover:shadow-sm;
+  }
+
+  /* Section heading */
+  .section-label {
+    @apply text-xs font-semibold tracking-widest uppercase text-zinc-400 dark:text-zinc-500 mb-4;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-zinc-100 dark:border-zinc-800;
+  }
+
+  /* Animated underline link */
+  .link-underline {
+    @apply relative text-zinc-900 dark:text-zinc-100 font-medium;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-px bg-indigo-500 transition-all duration-300;
+  }
+
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+}
+
+/* Code block overrides */
+pre[data-theme] {
+  @apply rounded-xl !important;
+}
+
+/* Prose in dark mode */
+.dark .prose {
+  @apply prose-invert;
+}

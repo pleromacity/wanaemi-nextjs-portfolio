@@ -1,0 +1,57 @@
+---
+title: "Why Platform Engineering is the Future of DevOps"
+date: "2025-06-01"
+summary: "Platform engineering is evolving beyond DevOps — here's why internal developer platforms are becoming the competitive advantage for engineering organisations."
+tags: ["DevOps", "Platform Engineering", "Kubernetes"]
+published: true
+---
+
+## What is Platform Engineering?
+
+Platform engineering is the discipline of designing and building toolchains and workflows that enable self-service capabilities for software engineering organisations.
+
+Unlike traditional DevOps, which focuses on collaboration between Dev and Ops teams, platform engineering **productises** that collaboration into an **Internal Developer Platform (IDP)** that teams consume as a service.
+
+## The Core Principle
+
+> Build the paved road, not the guardrails.
+
+The goal is to reduce cognitive load for application developers — letting them ship features without needing to understand the full complexity of Kubernetes, Terraform, or cloud IAM.
+
+## Key Components of a Modern IDP
+
+1. **Self-service infrastructure provisioning** (Backstage, Crossplane)
+2. **Automated CI/CD pipelines** (GitHub Actions, ArgoCD)
+3. **Observability by default** (Prometheus, Grafana, Datadog)
+4. **Developer portal** for service catalogues and documentation
+
+## A Simple Terraform Example
+
+```hcl
+module "eks_cluster" {
+  source          = "terraform-aws-modules/eks/aws"
+  cluster_name    = "wanaemi-platform"
+  cluster_version = "1.29"
+  vpc_id          = module.vpc.vpc_id
+  subnet_ids      = module.vpc.private_subnets
+
+  eks_managed_node_groups = {
+    default = {
+      min_size     = 2
+      max_size     = 6
+      desired_size = 3
+      instance_types = ["t3.medium"]
+    }
+  }
+}
+```
+
+## Why It Matters
+
+Platform engineering reduces **time-to-production** from weeks to hours. Teams that adopt IDPs report:
+
+- 40% reduction in deployment failures
+- 60% faster onboarding for new engineers
+- Significant reduction in toil and incident response time
+
+The future belongs to organisations that treat their internal tooling with the same product discipline they apply to customer-facing software.

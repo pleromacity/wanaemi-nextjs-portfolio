@@ -1,0 +1,68 @@
+---
+title: "Zero-Downtime Deployments with Kubernetes and ArgoCD"
+date: "2025-05-15"
+summary: "A practical walkthrough of implementing GitOps-based continuous delivery on Kubernetes using ArgoCD, with rolling updates and canary strategies."
+tags: ["Kubernetes", "ArgoCD", "GitOps", "CI/CD"]
+published: true
+---
+
+## The Problem with Traditional Deployments
+
+Every engineering team dreads the deployment window. Scheduled downtime, rollback anxiety, and the 3am on-call rotation — these are symptoms of a deployment process that hasn't been modernised.
+
+Kubernetes + ArgoCD changes all of that.
+
+## What is GitOps?
+
+GitOps is an operational framework that takes DevOps best practices used for application development — version control, collaboration, CI/CD — and applies them to infrastructure automation.
+
+**The core principle:** Git is the single source of truth for both application code and infrastructure configuration.
+
+## Setting Up ArgoCD
+
+```bash
+# Install ArgoCD into your cluster
+kubectl create namespace argocd
+kubectl apply -n argocd -f \
+  https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+# Access the UI
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+```
+
+## Defining an Application
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/pleromacity/my-app
+    targetRevision: HEAD
+    path: k8s/
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: production
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
+
+## Rolling Updates vs Canary
+
+| Strategy      | Risk    | Complexity | Use Case                     |
+|---------------|---------|------------|------------------------------|
+| Rolling       | Low     | Low        | Stateless services           |
+| Blue/Green    | Very low| Medium     | APIs with strict SLAs        |
+| Canary        | Minimal | High       | High-traffic critical paths  |
+
+## The Result
+
+With this setup, every `git push` to `main` triggers an automatic, zero-downtime deployment. ArgoCD continuously monitors drift and self-heals — meaning your cluster always reflects what's in Git.
+
+No more deployment windows. No more 3am pages for bad deploys.
