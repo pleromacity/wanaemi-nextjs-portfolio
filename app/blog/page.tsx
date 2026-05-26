@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   const posts  = getAllPosts()
-  const allTags = [...new Set(posts.flatMap(p => p.tags))].sort()
+  const allTags = Array.from(new Set(posts.flatMap(p => p.tags))).sort()
 
   return (
     <div className="max-w-3xl mx-auto px-5 py-16 sm:py-24">
